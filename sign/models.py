@@ -2,7 +2,6 @@ from django.db import models
 from encrypted_fields import fields
 from hdwallet import BIP44HDWallet
 from hdwallet.symbols import ETH
-from django.core.validators import MinLengthValidator
 
 
 class BlockchainAccount(models.Model):
@@ -10,7 +9,7 @@ class BlockchainAccount(models.Model):
         ETHEREUM_LIKE = 'ethereum like'
         BINANCE_CHAIN = 'binance chain'
 
-    network_type = models.CharField(max_length=50, choices=NetworkType.choices, validators=[MinLengthValidator(1)])
+    network_type = models.CharField(max_length=50, choices=NetworkType.choices)
     address = models.CharField(max_length=100, primary_key=True)
     mnemonic = fields.EncryptedTextField()
     _private_key = fields.EncryptedTextField()
