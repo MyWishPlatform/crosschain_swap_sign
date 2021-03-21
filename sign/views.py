@@ -2,7 +2,7 @@ from web3 import Web3
 from django.http import JsonResponse
 from requests_http_signature import HTTPSignatureAuth
 from rest_framework.decorators import api_view
-from sign.models import BlockchainAccount, ClientSecret
+from sign.models import BlockchainAccount, ClientSecret, NetworkType
 from rest_framework.exceptions import PermissionDenied
 
 
@@ -25,9 +25,9 @@ def sign_view(request):
     except BlockchainAccount.DoesNotExist:
         raise PermissionDenied
 
-    if account.network_type == BlockchainAccount.NetworkType.ETHEREUM_LIKE:
+    if account.network_type == NetworkType.ETHEREUM_LIKE:
         signed_tx = Web3().eth.account.sign_transaction(tx_params, account.private_key)
         raw_hex_tx = signed_tx.rawTransaction.hex()
         return JsonResponse({'signed_tx': raw_hex_tx})
-    elif account.network_type == BlockchainAccount.NetworkType.BINANCE_CHAIN:
+    elif account.network_type == NetworkType.BINANCE_CHAIN:
         raise PermissionDenied

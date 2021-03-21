@@ -4,11 +4,12 @@ from hdwallet import BIP44HDWallet
 from hdwallet.symbols import ETH
 
 
-class BlockchainAccount(models.Model):
-    class NetworkType(models.TextChoices):
-        ETHEREUM_LIKE = 'ethereum like'
-        BINANCE_CHAIN = 'binance chain'
+class NetworkType(models.TextChoices):
+    ETHEREUM_LIKE = 'ethereum like'
+    BINANCE_CHAIN = 'binance chain'
 
+
+class BlockchainAccount(models.Model):
     network_type = models.CharField(max_length=50, choices=NetworkType.choices)
     address = models.CharField(max_length=100, primary_key=True)
     mnemonic = fields.EncryptedTextField(default='')
@@ -16,7 +17,7 @@ class BlockchainAccount(models.Model):
 
     @property
     def private_key(self):
-        if self.mnemonic and self.network_type == self.NetworkType.ETHEREUM_LIKE:
+        if self.mnemonic and self.network_type == NetworkType.ETHEREUM_LIKE:
             hd_wallet = BIP44HDWallet(symbol=ETH, account=0, change=False, address=0)
             hd_wallet.from_mnemonic(mnemonic=self.mnemonic)
             return hd_wallet.private_key()
