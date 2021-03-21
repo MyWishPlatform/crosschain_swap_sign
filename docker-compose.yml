@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres
+    env_file: .env
+    volumes:
+      - ./.docker/postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+  web:
+    env_file: .env
+    build:
+      context: .
+      dockerfile: web.Dockerfile
+    ports:
+      - "${DOCKER_EXPOSE_PORT?8000}:8000"
+    depends_on:
+      - db
+    restart: unless-stopped
+    volumes:
+      - .:/app
