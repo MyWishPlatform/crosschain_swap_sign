@@ -27,7 +27,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'crosschain_swap_sign.urls'
+ROOT_URLCONF = 'sign.urls'
 
 TEMPLATES = [
     {
