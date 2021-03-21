@@ -14,7 +14,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'encrypted_fields',
-    'crosschain_swap_sign',
+    'sign',
 ]
 
 MIDDLEWARE = [
