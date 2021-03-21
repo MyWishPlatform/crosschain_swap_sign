@@ -11,8 +11,8 @@ class BlockchainAccount(models.Model):
 
     network_type = models.CharField(max_length=50, choices=NetworkType.choices)
     address = models.CharField(max_length=100, primary_key=True)
-    mnemonic = fields.EncryptedTextField()
-    _private_key = fields.EncryptedTextField()
+    mnemonic = fields.EncryptedTextField(default='')
+    _private_key = fields.EncryptedTextField(default='')
 
     @property
     def private_key(self):
