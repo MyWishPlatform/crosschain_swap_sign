@@ -26,7 +26,7 @@ def sign_view(request):
         raise PermissionDenied
 
     if account.network_type == BlockchainAccount.NetworkType.ETHEREUM_LIKE:
-        signed_tx = Web3().eth.account.sign_transaction(tx_params, account.secret)
+        signed_tx = Web3().eth.account.sign_transaction(tx_params, account.private_key)
         raw_hex_tx = signed_tx.rawTransaction.hex()
         return JsonResponse({'signed_tx': raw_hex_tx})
     elif account.network_type == BlockchainAccount.NetworkType.BINANCE_CHAIN:

@@ -8,6 +8,7 @@ cytoolz==0.11.0
 Django==3.1.7
 django-searchable-encrypted-fields==0.1.9
 djangorestframework==3.12.2
+ecdsa==0.16.1
 eth-abi==2.1.1
 eth-account==0.5.4
 eth-hash==0.3.1
@@ -16,11 +17,13 @@ eth-keys==0.3.3
 eth-rlp==0.2.1
 eth-typing==2.2.2
 eth-utils==1.10.0
+hdwallet==1.1.0
 hexbytes==0.2.1
 idna==2.10
 ipfshttpclient==0.7.0a1
 jsonschema==3.2.0
 lru-dict==1.1.7
+mnemonic==0.19
 multiaddr==0.0.9
 netaddr==0.8.0
 parsimonious==0.8.1
@@ -28,6 +31,7 @@ protobuf==3.15.6
 psycopg2-binary==2.8.6
 pycryptodome==3.10.1
 pyrsistent==0.17.3
+pysha3==1.0.2
 pytz==2021.1
 requests==2.25.1
 requests-http-signature==0.2.0
