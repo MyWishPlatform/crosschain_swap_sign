@@ -2,7 +2,7 @@ from web3 import Web3
 from django.http import JsonResponse
 from requests_http_signature import HTTPSignatureAuth
 from rest_framework.decorators import api_view
-from crosschain_swap_sign.models import BlockchainAccount, ClientSecret
+from sign.models import BlockchainAccount, ClientSecret
 from rest_framework.exceptions import PermissionDenied
 
 

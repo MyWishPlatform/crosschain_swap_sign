@@ -45,7 +45,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'crosschain_swap_sign.wsgi.application'
+WSGI_APPLICATION = 'sign.wsgi.application'
 
 DATABASES = {
     'default': {
@@ -86,6 +86,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 try:
-    from crosschain_swap_sign.settings_local import *
+    from sign.settings_local import *
 except ImportError:
     print('Cannot import local settings', flush=True)
